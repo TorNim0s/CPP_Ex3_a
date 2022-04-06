@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <stdexcept>
+
 
 namespace zich
 {
@@ -12,8 +14,7 @@ namespace zich
 
     public:
         // Constructors
-        Matrix(const std::vector<double> data, const int row, const int col);
-        Matrix(const int row, const int col);
+        Matrix(const std::vector<double> &mat, const int row, const int col);
 
         // Operator +
         Matrix operator+(Matrix const &other);
@@ -28,18 +29,18 @@ namespace zich
         Matrix operator--(const int num);
 
         // Operator *
-        Matrix operator*(Matrix const &other);
-        Matrix &operator*=(Matrix const &other);
+        Matrix operator*(const Matrix &other);
+        Matrix &operator*=(const Matrix &other);
         Matrix operator*(const double num);
         Matrix &operator*=(const double num);
 
         // statements
-        bool operator<(Matrix &other);
-        bool operator<=(Matrix &other);
-        bool operator>(Matrix &other);
-        bool operator>=(Matrix &other);
-        bool operator==(Matrix &other);
-        bool operator!=(Matrix &other);
+        bool operator<(const Matrix &other) const;
+        bool operator<=(const Matrix &other) const;
+        bool operator>(const Matrix &other) const;
+        bool operator>=(const Matrix &other) const;
+        bool operator==(const Matrix &other) const;
+        bool operator!=(const Matrix &other) const;
 
         // cout <<
         friend std::ostream & operator<<(std::ostream &os, const Matrix &ourMat);
